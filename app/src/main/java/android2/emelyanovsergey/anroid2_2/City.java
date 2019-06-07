@@ -3,13 +3,25 @@ package android2.emelyanovsergey.anroid2_2;
 public class City {
     private long ID;
     private String Name;
-
-    public City() {
-    }
+    private String Weather;
+    private String UpToDate;
 
     public City(long ID, String name) {
         this.ID = ID;
         Name = name;
+        Weather = "";
+        UpToDate = "";
+    }
+
+    public City(long ID, String name, String weather) {
+        this(ID, name);
+        Weather = weather;
+        UpToDate = "";
+    }
+
+    public City(long ID, String name, String weather, String upToDate) {
+        this(ID, name, weather);
+        UpToDate = upToDate;
     }
 
     public long getID() {
@@ -26,5 +38,21 @@ public class City {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public String getWeather() {
+        return Weather;
+    }
+
+    public void setWeather(String weather) {
+        Weather = weather;
+    }
+
+    public String getUpToDate() {
+        return UpToDate;
+    }
+
+    public void setUpToDate(String upToDate) {
+        UpToDate = upToDate;
     }
 }
