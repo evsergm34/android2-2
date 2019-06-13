@@ -14,6 +14,38 @@
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+        <Button
+            android:id="@+id/getLocationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Координаты"/>
+
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:id="@+id/locationLatitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="долгота"/>
+        <TextView
+            android:id="@+id/locationLongitude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="широта"/>
+
+        <Button
+            android:id="@+id/getWeatherForLocationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="погода"/>
+
+    </LinearLayout>
+
+
         <TextView
             android:id="@+id/cityNameTextView"
             android:layout_width="wrap_content"
