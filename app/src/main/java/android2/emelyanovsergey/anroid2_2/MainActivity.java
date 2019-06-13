@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                             showToast("город " + city.getName() + "не найден на openweather");
                             MyDataBaseHelper.getInstance(MainActivity.this).delCity(city);
                         }
+
                         updateCitys();
                     }
 
