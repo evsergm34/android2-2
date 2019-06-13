@@ -197,9 +197,9 @@ public class MainActivity extends AppCompatActivity {
         currentLocation = new Location("");
         currentLocation.setLatitude(0);
         currentLocation.setLongitude(0);
+
         addLocation("Moscow", 37.621265, 55.753692, 38.113880, 55.402066);
         addLocation("Ryazan", 39.711553, 54.627322, 39.595585, 54.707500);
-
     }
 
     private void initElements() {
