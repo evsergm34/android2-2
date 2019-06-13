@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void registerBrodcastReceivers() {
         BroadcastReceiver br = new BroadcastReceiver() {
             @Override
@@ -110,54 +109,54 @@ public class MainActivity extends AppCompatActivity {
                 showToast("получен Brodcast для обновления");
                 String action = intent.getStringExtra("action");
                 if (action.equals("updateAllCity")) {
-                    for (int i=0;i<citys.size();i++) {
+                    for (int i = 0; i < citys.size(); i++) {
                         LoadCityWeather(citys.get(i));
                     }
                 }
             }
         };
         IntentFilter intentFilter = new IntentFilter("ru.android2.evserg.action.updateWeather");
-        registerReceiver(br,intentFilter);
+        registerReceiver(br, intentFilter);
 
     }
 
     @SuppressLint("MissingPermission")
-    private void requestLocation(){
+    private void requestLocation() {
 
-       if (getLocationPermissions(false)) {
-           locationManager =  (LocationManager) getSystemService(LOCATION_SERVICE);
-           Criteria criteria = new Criteria();
-           criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-           locationProvider=locationManager.getBestProvider(criteria,true);
-           if (locationProvider!=null){
-               locationManager.requestSingleUpdate(locationProvider, new LocationListener() {
-                   @Override
-                   public void onLocationChanged(Location location) {
-                       ((TextView) findViewById(R.id.locationLatitude)).setText(Double.toString(location.getLatitude()));
-                       ((TextView) findViewById(R.id.locationLongitude)).setText(Double.toString(location.getLongitude()));
-                       currentLocation.set(location);
-                   }
+        if (getLocationPermissions(false)) {
+            locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+            locationProvider = locationManager.getBestProvider(criteria, true);
+            if (locationProvider != null) {
+                locationManager.requestSingleUpdate(locationProvider, new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        ((TextView) findViewById(R.id.locationLatitude)).setText(Double.toString(location.getLatitude()));
+                        ((TextView) findViewById(R.id.locationLongitude)).setText(Double.toString(location.getLongitude()));
+                        currentLocation.set(location);
+                    }
 
-                   @Override
-                   public void onStatusChanged(String s, int i, Bundle bundle) {
+                    @Override
+                    public void onStatusChanged(String s, int i, Bundle bundle) {
 
-                   }
+                    }
 
-                   @Override
-                   public void onProviderEnabled(String s) {
+                    @Override
+                    public void onProviderEnabled(String s) {
 
-                   }
+                    }
 
-                   @Override
-                   public void onProviderDisabled(String s) {
+                    @Override
+                    public void onProviderDisabled(String s) {
 
-                   }
-               },getMainLooper());
-           }
-       } else {
-           ((TextView) findViewById(R.id.locationLatitude)).setText("no permission");
-           ((TextView) findViewById(R.id.locationLongitude)).setText("no permission");
-       }
+                    }
+                }, getMainLooper());
+            }
+        } else {
+            ((TextView) findViewById(R.id.locationLatitude)).setText("no permission");
+            ((TextView) findViewById(R.id.locationLongitude)).setText("no permission");
+        }
     }
 
     private String getCityByCurrentLocation() {
@@ -179,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-    private void addLocation(String cityName, Double latitudeCenter, Double longitudeCenter, Double latitudeCorner, Double longitudeCorner){
+    private void addLocation(String cityName, Double latitudeCenter, Double longitudeCenter, Double latitudeCorner, Double longitudeCorner) {
         Location locationCenter = new Location("");
         locationCenter.setLatitude(latitudeCenter);
         locationCenter.setLongitude(longitudeCenter);
@@ -198,10 +197,11 @@ public class MainActivity extends AppCompatActivity {
         currentLocation = new Location("");
         currentLocation.setLatitude(0);
         currentLocation.setLongitude(0);
-        addLocation("Moscow",37.621265, 55.753692,38.113880,55.402066);
-        addLocation("Ryazan",39.711553, 54.627322,39.595585,54.707500);
+        addLocation("Moscow", 37.621265, 55.753692, 38.113880, 55.402066);
+        addLocation("Ryazan", 39.711553, 54.627322, 39.595585, 54.707500);
 
     }
+
     private void initElements() {
         cityNameEditText = (EditText) findViewById(R.id.cityNameEditText);
 
@@ -217,9 +217,9 @@ public class MainActivity extends AppCompatActivity {
         getWeatherForLocationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String cityByLocation=getCityByCurrentLocation();
-                if (cityByLocation!=null) {
-                    ((EditText)findViewById(R.id.cityNameEditText)).setText(cityByLocation);
+                String cityByLocation = getCityByCurrentLocation();
+                if (cityByLocation != null) {
+                    ((EditText) findViewById(R.id.cityNameEditText)).setText(cityByLocation);
                     LoadCityWeather(MyDataBaseHelper.getInstance(MainActivity.this).getCity(cityByLocation));
                 }
             }
@@ -328,7 +328,6 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
         toast.show();
     }
-
 
 
 }
